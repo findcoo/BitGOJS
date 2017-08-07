@@ -1,8 +1,7 @@
 FROM node:boron
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
-RUN npm install
-COPY . /usr/src/app
+RUN useradd -ms /bin/bash rxbit
+USER rxbit
+WORKDIR /home/rxbit
+COPY . /home/rxbit/
 EXPOSE 3080
 CMD [ "npm", "run", "express" ]
